@@ -1,0 +1,31 @@
+.img-div{
+    display: block;
+    max-width: 500px;
+    max-height: 400px;
+    margin: 10px auto;
+    text-align: center;
+}
+.img-div img {
+    border-radius: 30px;
+    
+
+}
+#name {
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.btn-group{
+    margin: 10px 0;
+    
+}
+.btn-group button {
+    margin: 10px 0;
+}
+#desc{
+    margin: 10px 0;
+    padding-left: 10px;
+    color: red;
+    font-family: monospace;
+
+
+}

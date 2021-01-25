@@ -1,0 +1,25 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 20px 0;
+}
+.btns .btn-danger{
+  margin-left: 10px;
+}
+input .ng-invalid .ng-untoched{
+  border: red 1px solid;
+
+}
+#img {
+  max-width: 400px;
+  max-height: 250px ;
+  margin: 5px auto;
+  border-radius: 20px;
+}
+#ing {
+  margin-top: -50px;
+}

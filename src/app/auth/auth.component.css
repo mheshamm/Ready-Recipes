@@ -1,0 +1,21 @@
+.btns {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
+.btns button {
+    margin: 5px auto ;
+    width: 150px;
+}
+.loading {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+    vertical-align: middle;
+    
+}
+app-loading-spinner {
+    margin-top: 30VH;
+}
