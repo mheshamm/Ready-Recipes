@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from '../shared/http.service';
 import { AuthService } from '../auth/auth.service';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -14,6 +14,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit , OnDestroy  {
   isAuth = false ;
   menu = faBars ;
+  
   
   private sub : Subscription
   constructor( private httpServ : HttpService ,  private authServ : AuthService , private router : Router ){}

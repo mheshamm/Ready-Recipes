@@ -11,7 +11,7 @@ export class RecipesResolver implements Resolve<Recipe[]> {
 
     }
     resolve( route : ActivatedRouteSnapshot , state : RouterStateSnapshot){
-        this.httpServ.saveRecipes();
+        
         
         return this.httpServ.fetchRecipes();
     }

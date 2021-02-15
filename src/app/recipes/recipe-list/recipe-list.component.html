@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn" id="new" (click)="onNewRecipe()">New Recipe</button>
+    <button class="btn" id="new" (click)="onNewRecipe()"> 
+      <fa-icon [icon]='add' ></fa-icon>
+      New Recipe</button>
   </div>
 </div>
-<hr>
+
 <div class="row">
   <div class="col-xs-12">
     <app-recipe-item

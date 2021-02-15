@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { RecipeService } from '../recipe.service';
 import { HttpService } from 'src/app/shared/http.service';
+import { faCheck, faPlus, faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -14,6 +15,10 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  add = faPlus;
+  save = faCheck;
+  cancel = faRemoveFormat ;
+  
 
   get ingredientsControls() {
     return (this.recipeForm.get('ingredients') as FormArray).controls;
@@ -33,6 +38,8 @@ export class RecipeEditComponent implements OnInit {
           this.initForm();
         }
       );
+      this.httpServ.fetchRecipes();
+      
   }
 
   onSubmit() {
@@ -43,13 +50,20 @@ export class RecipeEditComponent implements OnInit {
     //   this.recipeForm.value['ingredients']);
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
-    this.onCancel();
     this.httpServ.saveRecipes().subscribe( res => {
-
+      
     }) ;
+    setTimeout(() => {
+      
+      this.router.navigate(['/recipes' , this.id], {relativeTo: this.route});
+    }, 500);
+    
+    
+    
     
   }
 
@@ -103,8 +117,22 @@ export class RecipeEditComponent implements OnInit {
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),
       'description': new FormControl(recipeDescription, Validators.required),
-      'ingredients': recipeIngredients
+      'ingredients': recipeIngredients 
+
     });
+    
+
+    
   }
+  block(e){
+    const a  = e.target.childNodes;
+    console.log(a)
+    a[0].classList.add('pos');
+    a[1].classList.add('block');
+    e.target.style.cursor = 'text' 
+    
+  }
+  
+  
 
 }

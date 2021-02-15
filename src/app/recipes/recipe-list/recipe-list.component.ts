@@ -5,6 +5,7 @@ import { HttpService } from 'src/app/shared/http.service';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-recipe-list',
@@ -14,6 +15,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   subscription: Subscription;
+  add = faPlus ;
 
   constructor(private recipeService: RecipeService,
               private router: Router,
@@ -29,7 +31,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
       );
     this.recipes = this.recipeService.getRecipes();
     this.httpServ.fetchRecipes().subscribe(res=> {});
-    this.httpServ.saveRecipes().subscribe( res => {}) ;
+    
   }
 
   onNewRecipe() {

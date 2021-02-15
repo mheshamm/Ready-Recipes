@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { AuthService, responseDataa } from './auth.service';
 import { Observable } from 'rxjs';
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-auth',
@@ -15,6 +16,9 @@ export class AuthComponent   {
   
   isLoading = false ;
   error : string = null ;
+  userIcon = faUser ;
+  userPass = faLock ;
+  
 
   constructor( private authServ : AuthService , private router : Router) { }
   
@@ -35,9 +39,10 @@ export class AuthComponent   {
     if(this.isLogIn){
       this.isLoading = true ;
       
-      
-      
       authObs = this.authServ.signIn(email , password);
+      
+      
+      
      
 
     }else{
@@ -62,6 +67,15 @@ export class AuthComponent   {
   }
   cancel(){
     return this.error=null;
+  }
+  mail(){
+    document.querySelector('.mail-div').classList.add('block')
+    document.querySelector('.label-mail').classList.add('pos')
+  }
+  pass(){
+    document.querySelector('.password-div').classList.add('block')
+    document.querySelector('.label-pass').classList.add('pos')
+
   }
 
 }
